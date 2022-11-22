@@ -1,0 +1,37 @@
+gcloud config set project staging-audius-infra
+gcloud sql instances list
+- gets all instances in the form of like:
+
+NAME                              DATABASE_VERSION  LOCATION       TIER               PRIMARY_ADDRESS  PRIVATE_ADDRESS  STATUS
+creator-5                         POSTGRES_11       us-central1-f  db-custom-1-3840   35.239.64.107    -                RUNNABLE
+
+
+gcloud sql backups list --instance=discovery-3-nov-1
+or pass -i=- for ALL backups
+ID             WINDOW_START_TIME              ERROR  STATUS      INSTANCE
+
+
+gcloud sql instances create \
+--assign-ip \
+--database-version
+
+
+            --database-version=SQLSERVER_2017_EXPRESS --cpu=2 \
+            --memory=3840MiB --zone=us-central1-a \
+            --root-password=password123
+
+
+gcloud sql backups restore BACKUP_ID \
+--restore-instance=TARGET_INSTANCE_NAME \
+--backup-instance=SOURCE_INSTANCE_NAME
+
+https://cloud.google.com/sql/docs/postgres/clone-instance
+
+gcloud sql instances clone
+gcloud sql instances clone SOURCE_INSTANCE_NAME TARGET_INSTANCE_NAME
+
+Cloning Cloud SQL instance...⠶
+Cloning Cloud SQL instance...done.
+Created [https://sqladmin.googleapis.com/sql/v1beta4/projects/staging-audius-infra/instances/discovery-3-piazz-test].
+NAME                    DATABASE_VERSION  LOCATION       TIER               PRIMARY_ADDRESS  PRIVATE_ADDRESS  STATUS
+discovery-3-piazz-test  POSTGRES_11       us-central1-f  db-custom-4-15360  34.71.69.50      -                RUNNABLE
